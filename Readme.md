@@ -1,6 +1,6 @@
 # Bookmark Management App
 ##### *created by Besker Telisma*  
-##### ***[LIVE DEMO](https://besker1.github.io/Bookmark/.)***  
+##### ***[LIVE DEMO](https://besker1.github.io/book2/.)***  
 ---
 ### App Overview
 
