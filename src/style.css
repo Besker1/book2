@@ -1,0 +1,76 @@
+
+.bookmark-item.expanded > .bookmark-item-rating {
+    display:none;
+}
+
+.bookmark-item:not(.expanded) .bookmark-item-content-wrapper {
+    display: none;
+}
+
+.bookmark-item.expanded .bookmark-item-content-wrapper {
+    display: flex;
+    flex-flow: column;
+}
+
+.bookmark-item {
+    padding:1rem;
+}
+
+
+header{
+    text-align: center;
+    
+}
+.mainpage-buttons{
+    display: flex;
+    justify-content: center;
+}
+
+.mainpage-button-wrap{
+    margin-left: 100px;
+}
+
+main{
+    margin: auto 0;
+    border-radius: 5px;
+    border: solid black;
+    padding: 0px 0px;
+}
+
+#addbookmark-form{
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+}
+
+.the-buttons{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 10px;
+}
+
+/* new bookmark forms created */
+li{
+    list-style: none;
+}
+.bookmark-item{
+    margin-right: 30px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    border-radius: 5px;
+    border: solid black;
+    /* padding: 10px 0px; */
+}
+
+@media all and (min-width: 600px){
+main{
+    margin: auto 0;
+    border-radius: 5px;
+    border: solid black;
+    padding: 0px 0px;
+    margin: 0px 500px;
+}
+
+}
