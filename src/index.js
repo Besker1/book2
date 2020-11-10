@@ -2,92 +2,182 @@ import './style.css';
 import store from './store';
 import templates from './templates';
 import api from './api';
-const setupEventListeners = () => {
+import $ from 'jquery';
+// const setupEventListeners = () => {
 
-    // main page event listeners
+//     main page event listeners
 
-    // // change page to add bookmark form (add bookmark form button on main page)
-    window.addEventListener('click', (e)=>{
-        if (e.target.id === 'mainpage-button-newbookmark') {
-            store.page = 'add';
-            render();
-        }
-    });
+//     // change page to add bookmark form (add bookmark form button on main page)
+//     window.addEventListener('click', (e)=>{
+//         if (e.target.id === 'mainpage-button-newbookmark') {
+//             store.page = 'add';
+//             render();
+//         }
+//     });
 
-    // // delete bookmark item with id
-    window.addEventListener('click', (e)=>{
-        // handle button click
-        if (e.target.classList.contains('bookmark-item-button-delete')) {
-            const id = e.target.parentNode.parentNode.id;
-            api.deleteBookmark(id, ()=>{
-                render();
-            })
-        }
-    });
+//     // delete bookmark item with id
+//     window.addEventListener('click', (e)=>{
+//         // handle button click
+//         if (e.target.classList.contains('bookmark-item-button-delete')) {
+//             const id = e.target.parentNode.parentNode.id;
+//             api.deleteBookmark(id, ()=>{
+//                 render();
+//             })
+//         }
+//     });
 
-    // // individual bookmark item view descriptions on main page
-    window.addEventListener('click', (e)=>{
-        // handle button click
-        if (e.target.classList.contains('show') || e.target.classList.contains('bookmark-item') && !e.target.classList.contains('bookmark-item-button-delete')) {
-            e.target.classList.toggle("expanded");
-        }
-    });
+      
+
+//     // individual bookmark item view descriptions on main page
+//     window.addEventListener('click', (e)=>{
+//         // handle button click
+//         if (e.target.classList.contains('show') || e.target.classList.contains('bookmark-item') && !e.target.classList.contains('bookmark-item-button-delete')) {
+//             e.target.classList.toggle("expanded");
+//         }
+//     });
+
+//         // individual bookmark item view descriptions on main page
+
+//     // filter by rating on main page
+//     window.addEventListener('change', (e)=>{
+//         // set the rating value in store
+//         if (e.target.id === 'mainpage-filter') {
+//             store.filter = Number(e.target.value);
+//             render();
+//         }
+//     });
+
+//         // filter by rating on main page
+  
+
+
+//     add bookmark page event listeners
+
+//     // change page to main page (add bookmark form cancel button)
+//     window.addEventListener('click', (e)=>{
+//         // handle button click
+//         if (e.target.id === 'addbookmark-cancel') {
+//             store.page = 'main';
+//             render();
+//         }
+//     });
+
     
-    // // filter by rating on main page
-    window.addEventListener('change', (e)=>{
-        // set the rating value in store
-        if (e.target.id === 'mainpage-filter') {
-            store.filter = Number(e.target.value);
-            render();
-        }
-    });
-
-    // add bookmark page event listeners
-
-    // // change page to main page (add bookmark form cancel button)
-    window.addEventListener('click', (e)=>{
-        // handle button click
-        if (e.target.id === 'addbookmark-cancel') {
-            store.page = 'main';
-            render();
-        }
-    });
-    
-    // // add bookmark form submit (add bookmark form submit button)
-    window.addEventListener('submit', (e)=>{
-        // handle form submit
-        if (e.target.id === 'addbookmark-form') {
-            e.preventDefault();
-            const form = e.target;
-            const formData = new FormData(form);
-            const title = formData.get("addbookmark-title");
-            const url = formData.get("addbookmark-url");
-            const desc = formData.get("addbookmark-description");
-            const rating = parseInt(formData.get("addbookmark-rating"));
+//     // add bookmark form submit (add bookmark form submit button)
+//     window.addEventListener('submit', (e)=>{
+//         // handle form submit
+//         if (e.target.id === 'addbookmark-form') {
+//             e.preventDefault();
+//             const form = e.target;
+//             const formData = new FormData(form);
+//             const title = formData.get("addbookmark-title");
+//             const url = formData.get("addbookmark-url");
+//             const desc = formData.get("addbookmark-description");
+//             const rating = parseInt(formData.get("addbookmark-rating"));
             
-            const bookmark = {
+//             const bookmark = {
+//                 title,
+//                 url,
+//                 desc,
+//                 rating
+//             }
+
+         
+
+//             console.log('this is the bookmark app', bookmark) // eslint-disable-line no-console
+//             api.createBookmark(bookmark, ()=>{
+//                 store.page = 'main';
+//                 render();
+//             })
+//         }
+//     });
+     
+
+// }        
+
+
+
+//jquery breakdown
+
+   // // change page to add bookmark form (add bookmark form button on main page)
+   const newBookmark = ()=> {
+      $("#mainpage-button-newbookmark").on('click', (e) => {
+      store.page = 'add';
+      render();  
+      console.log('i was clicked')
+
+    })
+   }
+   
+
+            // // delete bookmark item with id
+    const handleDelete = () => {
+       $('.bookmark-item-button-delete').on('click', (e) => {
+              //     // handle button click
+          const id = e.target.parentNode.parentNode.id;
+          api.deleteBookmark(id, ()=>{
+              render();
+          })
+        })
+    }
+       
+////expand the description view 
+const hnadleExpansion = ()=>  {
+$('.bookmark-item-rating').on("click", (e) =>{
+  $('.bookmark-item-rating').toggleClass("expanded")
+})
+}
+
+//handle filter values
+const handleFilter = () => {
+  $('form').on('change', 'select', (e) => {
+                // set the rating value in store
+          store.filter = Number($('select').val());
+          render();
+      })
+}
+  
+//handle cancel button
+const handleCancel = () => {
+
+    $('#addbookmark-cancel').on('click', (e) => {
+      store.page = 'main';
+      render();
+    })
+}
+
+    // // add bookmark form submit (add bookmark form submit button)
+    const addBookmark = () => {
+
+   $('form').on('submit', (e) => {
+              e.preventDefault();
+              const title = $(".addbookmark-title").val()
+              const url = $('.addbookmark-url').val()
+              const desc = $(".addbookmark-description").val()
+              const rating  = $(".addbookmark-rating").val()
+
+              const bookmark = {
                 title,
                 url,
                 desc,
                 rating
             }
 
-            console.log('this is the bookmark app', bookmark) // eslint-disable-line no-console
             api.createBookmark(bookmark, ()=>{
-                store.page = 'main';
-                render();
+              store.page = 'main';
+              render();
+          })
             })
-        }
-    });
 
-}
+    }
 
 const render = () => {
     // run template function based on current page
     // if main render main page
     // if add render add bookmark page
-    let main = document.querySelector("main");
+    let main = ''
 
+    console.log(store.page == 'add')
     if ( store.page === 'main' ) {
        api.getBookmarks(bookmarks => {
             store.bookmarks = bookmarks.map(b => {
@@ -96,20 +186,30 @@ const render = () => {
 
             });
             
-            main.innerHTML = templates.main_page(store); //render main page using template function templates.main_page;
-        });
+            main = templates.main_page(store); //render main page using template function templates.main_page;
+            $('main').html(main)
+          });
     }
+
     if ( store.page === 'add' ) {
-        main.innerHTML = templates.addbookmark_page();//render add bookmark page using template function templates.addbookmark_page;
-    }
+        main= templates.addbookmark_page();//render add bookmark page using template function templates.addbookmark_page;
+        $('main').html(main)
+      }
+
 
 }
 
 const main = () => {
     // setup event listeners
-    setupEventListeners();
+    // setupEventListeners();
     // then render
     render();
+    handleCancel
+    handleDelete
+    handleFilter
+    hnadleExpansion
+    addBookmark
+    newBookmark
 }
 
-main();
+$(main);
