@@ -2,7 +2,6 @@ import './style.css';
 import store from './store';
 import templates from './templates';
 import api from './api';
-import Cuid from 'cuid'
 const setupEventListeners = () => {
 
     // main page event listeners
