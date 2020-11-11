@@ -101,7 +101,7 @@ import $ from 'jquery';
 
    // // change page to add bookmark form (add bookmark form button on main page)
    const newBookmark = ()=> {
-      $("#mainpage-button-newbookmark").on('click', (e) => {
+      $("main").on('click', "#mainpage-button-newbookmark",(e) => {
       store.page = 'add';
       render();  
       console.log('i was clicked')
@@ -130,7 +130,7 @@ $('.bookmark-item-rating').on("click", (e) =>{
 
 //handle filter values
 const handleFilter = () => {
-  $('form').on('change', 'select', (e) => {
+  $('main').on('change', 'select', (e) => {
                 // set the rating value in store
           store.filter = Number($('select').val());
           render();
@@ -147,14 +147,13 @@ const handleCancel = () => {
 }
 
     // // add bookmark form submit (add bookmark form submit button)
-    const addBookmark = () => {
-
-   $('form').on('submit', (e) => {
+  const addBookmark = () => {
+   $('main').on('submit', "#addbookmark-form", (e) => {
               e.preventDefault();
-              const title = $(".addbookmark-title").val()
-              const url = $('.addbookmark-url').val()
-              const desc = $(".addbookmark-description").val()
-              const rating  = $(".addbookmark-rating").val()
+              const title = $("#addbookmark-title").val()
+              const url = $('#addbookmark-url').val()
+              const desc = $("#addbookmark-description").val()
+              const rating  = $("#addbookmark-rating").val()
 
               const bookmark = {
                 title,
@@ -204,12 +203,12 @@ const main = () => {
     // setupEventListeners();
     // then render
     render();
-    handleCancel
-    handleDelete
-    handleFilter
-    hnadleExpansion
-    addBookmark
-    newBookmark
+    handleCancel();
+    handleDelete();
+    handleFilter();
+    hnadleExpansion();
+    addBookmark()
+    newBookmark()
 }
 
 $(main);
