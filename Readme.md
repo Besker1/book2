@@ -9,21 +9,7 @@ they have the option to add a titte and the url.
 
 ### Project Overview
 
-Using everything you've learned over the Fundamentals section of the course, you will build the frontend for an API-powered Bookmarks application that lets the user store and rate their custom web bookmarks.
-
-### Grading
-
-To receive a passing grade, the project must:
-
--   Fulfill every non-extension user story below
--   Fulfill every non-extension technical requirement below
-
-For successful submission, you  _MUST_:
-
-1.  Push your final version to the  `gh-pages`  branch of your repo. Your repo should be inside the cohort's organization and named  `[yourname]-bookmarks-app`.
-2.  Add the live GH Pages link to the header of your repo.
-3.  Create a README.md file that contains a full list of all user stories completed.
-4.  Submit the repo URL at the bottom of this page.
+built the frontend for an API-powered Bookmarks application that lets the user store and rate their custom web bookmarks.
 
 ### User Stories
 
@@ -51,7 +37,7 @@ As a user:
 -   (Extension feature - optional) I can edit the rating and description of a bookmark in my list
     
 
-### Technical Requirements
+### Technicals
 
 -   Use  `fetch`  for AJAX calls and jQuery for DOM manipulation
     
