@@ -115,6 +115,7 @@ import $ from 'jquery';
     const handleDelete = () => {
        $('.bookmark-item-button-delete').on('click', (e) => {
               //     // handle button click
+              console.log('click me delete')
           const id = e.target.parentNode.parentNode.id;
           api.deleteBookmark(id, ()=>{
               render();
@@ -124,8 +125,10 @@ import $ from 'jquery';
        
 ////expand the description view 
 const hnadleExpansion = ()=>  {
-$('main').on("click", '.bookmark-item-rating',(e) =>{
-  $('.bookmark-item-rating').toggleClass("expanded")
+$('main').on("click", '.bookmark-item-button-expand',(e) =>{
+  console.log('click me expand')
+  $('.bookmark-item-content-wrapper').toggleClass("expanded")
+  render();
 })
 }
 
