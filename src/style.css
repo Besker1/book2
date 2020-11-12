@@ -16,6 +16,9 @@
     padding:1rem;
 }
 
+.expand{
+    display: none;
+}
 
 header{
     text-align: center;
